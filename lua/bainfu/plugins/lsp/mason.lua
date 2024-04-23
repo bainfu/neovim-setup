@@ -34,7 +34,6 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
-        "react"
       },
     })
   end,
