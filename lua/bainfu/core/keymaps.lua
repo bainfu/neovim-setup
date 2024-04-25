@@ -22,3 +22,12 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
 
+
+-- trouble
+-- Lua
+keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
+keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
+keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
+keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
