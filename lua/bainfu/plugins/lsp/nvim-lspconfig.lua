@@ -131,6 +131,20 @@ return {
           },
         })
       end,
+      ["tsserver"] = function()
+        -- configure tsserver (with special settings)
+        lspconfig["tsserver"].setup({
+          capabilities = capabilities,
+          settings = {
+            -- enable ts server to use eslint
+            lint = true,
+            lintOnSave = true,
+            -- enable ts server to use prettier
+            format = true,
+            formatOnSave = true,
+          },
+        })
+      end,
     })
   end,
 }
