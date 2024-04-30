@@ -1,5 +1,4 @@
 return {
-  'nvim-neotest/neotest',
   requires = {
     'nvim-neotest/nvim-nio',
     'nvim-lua/plenary.nvim',
