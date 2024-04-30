@@ -1,45 +1,28 @@
 return {
-  requires = {
-    'nvim-neotest/nvim-nio',
-    'nvim-lua/plenary.nvim',
-    'antoinemadec/FixCursorHold.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    'nvim-neotest/neotest-jest',
+  {
+    "nvim-neotest/neotest-jest", branch = "main",
   },
-  log_level = 5,
-  opts = {
-    adapters = {
-      ['neotest-plenary'] = {},
-      ['neotest-jest'] = {
-        jestCommand = function()
-          return "npm test --"
-        end,
-        jestConfigFile = function()
-          local jestFile =  vim.fn.getcwd() .. "jest.config.ts"
-          print("jestFile: " .. jestFile)
-          return jestFile
-        end,
-        env = { CI = true },
-        cwd = function()
-          return vim.fn.getcwd()
-        end,
+  {
+    "nvim-neotest/neotest-plenary",
+  },
+  {
+    "nvim-neotest/neotest",
+    opts = {
+      adapters = {
+        "neotest-plenary",
+        "neotest-jest",
       },
     },
-    output = {
-      open_on_run = true,
+    keys = {
+      { ";tt", function() require("neotest").run.run(vim.fn.expand("%")) end, desc = "Run File" },
+      { ";tr", function() require("neotest").run.run() end, desc = "Run Nearest" },
+      { ";tT", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
+      { ";tl", function() require("neotest").run.run_last() end, desc = "Run All Test Files" },
+      { ";ts", function() require("neotest").summary.toggle() end, desc = "Toggle test summary" },
+      { ";to", function() require("neotest").output.open({ enter = true, auto_close = true}) end, desc = "Show Ouptut" },
+      { ";tO", function() require("neotest").output_panel.toggle() end, desc = "Toggle Output Panel" },
+      { ";tS", function() require("neotest").run.stop() end, desc = "Stop Tests" },
+
     },
-    quickfix = {
-      open = function()
-        if LazyVim.has('trouble.nvim') then
-          require('trouble').open({ mode = 'quickfix', focus = false})
-        else
-          vim.cmd('copen')
-        end
-      end,
-    }
-  },
-  keys = {
-    { ";tt", function() require('neotest').summary.toggle() end },
-    { ";tr", function() require('neotest').run.run() end, desc = "Run nearest" },
   }
 }
