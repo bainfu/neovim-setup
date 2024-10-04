@@ -2,6 +2,7 @@ return {
   "folke/tokyonight.nvim",
   priority = 1000,
   config = function()
+    local transparent = true
     local bg = "#011628"
     local bg_dark = "#011423"
     local bg_highlight = "#143652"
@@ -13,6 +14,7 @@ return {
     local border = "#547998"
 
     require("tokyonight").setup({
+      transparent = transparent,
       style = "night",
       on_colors = function(colors)
         colors.bg = bg

@@ -43,4 +43,32 @@ keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") en
 keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end)
 
 
+-- zenmode
+keymap.set("n", "<leader>zm", "<cmd>ZenMode<CR>", { desc = "Zen mode" })
+
+-- obsidian
+-- navigate to vault
+keymap.set("n", "<leader>oo", ":cd ~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Obsidian<cr>")
+
+-- convert note to template and remove leading white space
+keymap.set("n", "<leader>on", ":ObsidianTemplate note<cr> :lua vim.cmd([[1,/^\\S/s/^\\n\\{1,}//]])<cr>")
+-- strip date from note title and replace dashes with spaces
+-- must have cursor on title
+keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+--
+-- search for files in full vault
+keymap.set("n", "<leader>os", ":Telescope find_files search_dirs={\"~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Obsidian\"}<cr>", { desc = "Search for Obsidian Files in Vault" })
+keymap.set("n", "<leader>oz", ":Telescope live_grep search_dirs={\"~/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents/Obsidian\"}<cr>", { desc = "Search Obsidian Notes" })
+--
+
+-- neotest
+keymap.set("n", ";tt", function() require('neotest').run.run() end, { desc = "Run nearest test" })
+keymap.set("n", ";tf", function() require('neotest').run.file() end, { desc = "Run current file tests" })
+keymap.set("n", "<leader>us", function() require('neotest').run.suite() end, { desc = "Run test suite" })
+keymap.set("n", "<leader>uc", function() require('neotest').run.coverage() end, { desc = "Run test coverage" })
+keymap.set("n", ";tw", function() 
+    local nt = require('neotest')
+    nt.summary.toggle()
+    nt.watch.watch({suite = true })
+end, { desc = "Open test summary" })
 

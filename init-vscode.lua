@@ -15,6 +15,7 @@ opt.backup = false
 -- scrolling
 opt.scrolloff = 10
 
+
 -- tabs & indentation
 opt.tabstop = 4 -- 4 spaces for tabs
 opt.shiftwidth = 4 -- 4 spaces for indent width
@@ -48,6 +49,18 @@ opt.splitbelow = true
 opt.splitkeep = "cursor" -- keep cursor position when splitting window
 
 opt.path:append({"**"}) -- search in current directory and subdirectories
-opt.wildignore:append({"*/node_modules/*"}) -- ignore node_modules
+opt.wildignore:append({"*/node_modules/*"}) -- ignore node_module
+
+
+vim.g.mapleader = " "
+
+local keymap = vim.keymap 
+
+
+-- window management
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
 
