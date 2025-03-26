@@ -20,3 +20,11 @@ require("lazy").setup({ { import = "bainfu.plugins" }, { import = "bainfu.plugin
     notify = false,
   },
 })
+
+
+vim.opt.autoread = true
+
+-- refresh files if changed outside
+vim.fn.timer_start(2000, function()
+  vim.cmd("silent! checktime")
+end, { ["repeat"] = -1 })

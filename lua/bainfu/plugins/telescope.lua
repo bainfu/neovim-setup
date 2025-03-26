@@ -13,6 +13,7 @@ return {
     telescope.setup({
       defaults = {
         path_display = { "smart" },
+        ensure_installed = { "swift" },
         mappings = {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
