@@ -72,3 +72,7 @@ keymap.set("n", ";tw", function()
     nt.watch.watch({suite = true })
 end, { desc = "Open test summary" })
 
+-- peek
+keymap.set("n", "<leader>po", function() require("peek").open() end, { desc = "Peek Open" })
+keymap.set("n", "<leader>pc", function() require("peek").close() end, { desc = "Peek Close" })
+
