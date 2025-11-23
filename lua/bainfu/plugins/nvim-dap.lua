@@ -38,8 +38,7 @@ return {
     local xcodebuild = require("xcodebuild.integrations.dap")
 
     -- TODO: make sure to set path to your codelldb
-    local codelldbPath = os.getenv("HOME") .. "/tools/codelldb/extension/adapter/codelldb"
-    xcodebuild.setup(codelldbPath)
+    xcodebuild.setup()
 
     local define = vim.fn.sign_define
     define("DapBreakpoint", { text = "", texthl = "DiagnosticError", linehl = "", numhl = "" })

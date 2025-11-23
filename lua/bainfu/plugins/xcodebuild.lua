@@ -1,11 +1,10 @@
-local progress_handle
-
 return {
-  "wojciech-kulik/xcodebuild.nvim",
-  dependencies = {
-    "nvim-telescope/telescope.nvim",
-    "MunifTanjim/nui.nvim",
-  },
+
+    "wojciech-kulik/xcodebuild.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+    },
   config = function()
     require("xcodebuild").setup({
       show_build_progress_bar = false,
@@ -13,10 +12,11 @@ return {
         auto_open_on_success_tests = false,
         auto_open_on_failed_tests = false,
         auto_open_on_success_build = false,
-        auto_open_on_failed_build = false,
+        auto_open_on_failed_build = true,
         auto_focus = false,
         auto_close_on_app_launch = true,
         only_summary = true,
+       --logs_formatter = 'xcbeautify --disable-logging',
         notify = function(message, severity)
           local fidget = require("fidget")
           if progress_handle then
@@ -50,7 +50,6 @@ return {
         enabled = true,
       },
     })
-
     -- stylua: ignore start
     vim.keymap.set("n", "<leader>X", "<cmd>XcodebuildPicker<cr>", { desc = "Show Xcodebuild Actions" })
     vim.keymap.set("n", "<leader>xf", "<cmd>XcodebuildProjectManager<cr>", { desc = "Show Project Manager Actions" })
