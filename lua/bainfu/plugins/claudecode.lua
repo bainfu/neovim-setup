@@ -1,7 +1,16 @@
 return {
-  "coder/claudecode.nvim",
-  dependencies = { "folke/snacks.nvim" },
-  config = true,
+  "greggh/claude-code.nvim",
+  dependencies = { 
+        "folke/snacks.nvim",
+        "nvim-lua/plenary.nvim"
+    },
+  config = function()
+    require('claude-code').setup({
+        window = {
+            position = "vertical"
+        }
+    })
+  end,
   keys = {
     { "<leader>a", nil, desc = "AI/Claude Code" },
     { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
